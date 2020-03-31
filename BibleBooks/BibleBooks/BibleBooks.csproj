@@ -4,6 +4,22 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <DefaultLanguage>en-US</DefaultLanguage>
     <NeutralLanguage>en-US</NeutralLanguage>
+    <Owners>markivan.basto</Owners>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageId>BibleBooks</PackageId>
+    <PackageVersion>1.0.0</PackageVersion>
+    <Title>BibleBooks</Title>
+    <Authors>markivan.basto</Authors>
+    <Description>Bible book names, codes (OSIS, Paratext), and abbreviations (Thompson, Standard)</Description>
+    <Copyright>(c) 2020 Mark Ivan Basto</Copyright>
+    <PackageProjectUrl>https://github.com/MarkIvanDev/BibleBooks</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/MarkIvanDev/BibleBooks.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageTags>bible osis paratext thompson standard book names codes abbreviations</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
