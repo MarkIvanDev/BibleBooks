@@ -99,7 +99,8 @@ namespace BibleBooks
         {
             foreach (var item in GetStandardAbbreviations(culture))
             {
-                if (item.Value.Equals(abbreviation, StringComparison.CurrentCultureIgnoreCase))
+                if (item.Value.Equals(abbreviation, StringComparison.CurrentCultureIgnoreCase) ||
+                    $"{item.Value}.".Equals(abbreviation, StringComparison.CurrentCultureIgnoreCase))
                 {
                     return item.Key;
                 }
@@ -124,7 +125,8 @@ namespace BibleBooks
         {
             foreach (var item in GetThompsonAbbreviations(culture))
             {
-                if(item.Value.Equals(abbreviation, StringComparison.CurrentCultureIgnoreCase))
+                if(item.Value.Equals(abbreviation, StringComparison.CurrentCultureIgnoreCase) ||
+                   $"{item.Value}.".Equals(abbreviation, StringComparison.CurrentCultureIgnoreCase))
                 {
                     return item.Key;
                 }
