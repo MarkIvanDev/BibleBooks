@@ -24,7 +24,7 @@ namespace BibleBooks
         {
             foreach (var item in GetNames(culture))
             {
-                if (item.Value.Equals(name))
+                if (item.Value.Equals(name, StringComparison.CurrentCultureIgnoreCase))
                 {
                     return item.Key;
                 }
@@ -49,7 +49,7 @@ namespace BibleBooks
         {
             foreach (var item in GetOsisCodes())
             {
-                if (item.Value.Equals(code))
+                if (item.Value.Equals(code, StringComparison.CurrentCultureIgnoreCase))
                 {
                     return item.Key;
                 }
@@ -74,7 +74,7 @@ namespace BibleBooks
         {
             foreach (var item in GetParatextCodes())
             {
-                if (item.Value.Equals(code))
+                if (item.Value.Equals(code, StringComparison.CurrentCultureIgnoreCase))
                 {
                     return item.Key;
                 }
@@ -99,7 +99,7 @@ namespace BibleBooks
         {
             foreach (var item in GetStandardAbbreviations(culture))
             {
-                if (item.Value.Equals(abbreviation))
+                if (item.Value.Equals(abbreviation, StringComparison.CurrentCultureIgnoreCase))
                 {
                     return item.Key;
                 }
@@ -124,7 +124,7 @@ namespace BibleBooks
         {
             foreach (var item in GetThompsonAbbreviations(culture))
             {
-                if(item.Value.Equals(abbreviation))
+                if(item.Value.Equals(abbreviation, StringComparison.CurrentCultureIgnoreCase))
                 {
                     return item.Key;
                 }
