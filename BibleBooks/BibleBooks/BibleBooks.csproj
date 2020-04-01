@@ -9,7 +9,7 @@
 
   <PropertyGroup>
     <PackageId>BibleBooks</PackageId>
-    <PackageVersion>1.1.0</PackageVersion>
+    <PackageVersion>1.2.0</PackageVersion>
     <Title>BibleBooks</Title>
     <Authors>markivan.basto</Authors>
     <Description>Bible book names, codes (OSIS, Paratext), and abbreviations (Thompson, Standard)</Description>
