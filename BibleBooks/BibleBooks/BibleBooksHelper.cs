@@ -15,6 +15,11 @@ namespace BibleBooks
             keys = ((Key[])Enum.GetValues(typeof(Key))).ToDictionary(k => k.ToString(), k => k);
         }
 
+        public static string GetNumber(Number number, CultureInfo culture = null)
+        {
+            return Names.Numbers.ResourceManager.GetString(number.ToString(), culture ?? Names.Numbers.Culture);
+        }
+
         public static string GetName(Key key, CultureInfo culture = null)
         {
             return Names.Books.ResourceManager.GetString(key.ToString(), culture ?? Names.Books.Culture);
