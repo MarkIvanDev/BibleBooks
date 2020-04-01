@@ -48,6 +48,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Thompson.resx</DependentUpon>
     </Compile>
+    <Compile Update="Names\Numbers.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Numbers.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -70,6 +75,10 @@
     <EmbeddedResource Update="Abbreviations\Thompson.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Thompson.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Names\Numbers.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Numbers.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
 
