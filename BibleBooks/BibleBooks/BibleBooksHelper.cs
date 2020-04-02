@@ -146,5 +146,14 @@ namespace BibleBooks
                 yield return new KeyValuePair<Key, string>(key.Value, Abbreviations.Thompson.ResourceManager.GetString(key.Key, culture ?? Abbreviations.Thompson.Culture));
             }
         }
+
+        public static int GetMaxChapter(Key key)
+        {
+            if (int.TryParse(Metadata.Chapters.ResourceManager.GetString(key.ToString()), out var maxChapter))
+            {
+                return maxChapter;
+            }
+            return int.MaxValue;
+        }
     }
 }
