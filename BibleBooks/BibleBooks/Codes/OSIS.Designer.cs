@@ -585,9 +585,9 @@ namespace BibleBooks.Codes {
         /// <summary>
         ///   Looks up a localized string similar to Song.
         /// </summary>
-        public static string SongOfSolomon {
+        public static string SongOfSongs {
             get {
-                return ResourceManager.GetString("SongOfSolomon", resourceCulture);
+                return ResourceManager.GetString("SongOfSongs", resourceCulture);
             }
         }
         
