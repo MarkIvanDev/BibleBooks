@@ -38,6 +38,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Chapters.resx</DependentUpon>
     </Compile>
+    <Compile Update="Names\Alternative.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Alternative.resx</DependentUpon>
+    </Compile>
     <Compile Update="Names\Books.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -68,6 +73,10 @@
     <EmbeddedResource Update="Metadata\Chapters.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Chapters.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Names\Alternative.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Alternative.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Names\Books.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
