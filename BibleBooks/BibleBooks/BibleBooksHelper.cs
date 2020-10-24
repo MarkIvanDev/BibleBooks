@@ -41,7 +41,32 @@ namespace BibleBooks
         {
             foreach (var key in keys)
             {
-                yield return new KeyValuePair<Key, string>(key.Value, Names.Books.ResourceManager.GetString(key.Key, culture ?? Names.Books.Culture));
+                yield return new KeyValuePair<Key, string>(key.Value, GetName(key.Value, culture));
+            }
+        }
+
+        public static string GetAlternativeName(Key key, CultureInfo culture = null)
+        {
+            return Names.Alternative.ResourceManager.GetString(key.ToString(), culture ?? Names.Alternative.Culture);
+        }
+
+        public static Key? GetKeyForAlternativeName(string alternativeName, CultureInfo culture = null)
+        {
+            foreach (var item in GetAlternativeNames(culture))
+            {
+                if (item.Value.Equals(alternativeName, StringComparison.CurrentCultureIgnoreCase))
+                {
+                    return item.Key;
+                }
+            }
+            return null;
+        }
+
+        public static IEnumerable<KeyValuePair<Key, string>> GetAlternativeNames(CultureInfo culture = null)
+        {
+            foreach (var key in keys)
+            {
+                yield return new KeyValuePair<Key, string>(key.Value, GetAlternativeName(key.Value, culture));
             }
         }
 
@@ -66,7 +91,7 @@ namespace BibleBooks
         {
             foreach (var key in keys)
             {
-                yield return new KeyValuePair<Key, string>(key.Value, Codes.OSIS.ResourceManager.GetString(key.Key));
+                yield return new KeyValuePair<Key, string>(key.Value, GetOsisCode(key.Value));
             }
         }
 
@@ -91,7 +116,7 @@ namespace BibleBooks
         {
             foreach (var key in keys)
             {
-                yield return new KeyValuePair<Key, string>(key.Value, Codes.Paratext.ResourceManager.GetString(key.Key));
+                yield return new KeyValuePair<Key, string>(key.Value, GetParatextCode(key.Value));
             }
         }
 
@@ -117,7 +142,7 @@ namespace BibleBooks
         {
             foreach (var key in keys)
             {
-                yield return new KeyValuePair<Key, string>(key.Value, Abbreviations.Standard.ResourceManager.GetString(key.Key, culture ?? Abbreviations.Standard.Culture));
+                yield return new KeyValuePair<Key, string>(key.Value, GetStandardAbbreviation(key.Value, culture));
             }
         }
 
@@ -143,7 +168,7 @@ namespace BibleBooks
         {
             foreach (var key in keys)
             {
-                yield return new KeyValuePair<Key, string>(key.Value, Abbreviations.Thompson.ResourceManager.GetString(key.Key, culture ?? Abbreviations.Thompson.Culture));
+                yield return new KeyValuePair<Key, string>(key.Value, GetThompsonAbbreviation(key.Value, culture));
             }
         }
 

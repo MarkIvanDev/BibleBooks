@@ -9,7 +9,7 @@
 
   <PropertyGroup>
     <PackageId>BibleBooks</PackageId>
-    <PackageVersion>1.3.1</PackageVersion>
+    <PackageVersion>1.4.0</PackageVersion>
     <Title>BibleBooks</Title>
     <Authors>markivan.basto</Authors>
     <Description>Bible book names, codes (OSIS, Paratext), abbreviations (Thompson, Standard), and chapters</Description>
@@ -37,6 +37,11 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>Chapters.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Names\Alternative.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Alternative.resx</DependentUpon>
     </Compile>
     <Compile Update="Names\Books.Designer.cs">
       <DesignTime>True</DesignTime>
@@ -68,6 +73,10 @@
     <EmbeddedResource Update="Metadata\Chapters.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Chapters.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Names\Alternative.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Alternative.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Names\Books.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
