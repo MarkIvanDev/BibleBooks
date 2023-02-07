@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BibleBooks
 {
-    public enum Key
+    public enum BibleBook
     {
         Genesis = 1,
         Exodus = 2,
