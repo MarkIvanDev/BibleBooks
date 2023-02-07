@@ -9,7 +9,7 @@
 
   <PropertyGroup>
     <PackageId>BibleBooks</PackageId>
-    <PackageVersion>1.4.0</PackageVersion>
+    <PackageVersion>1.5.0-prerelease202210151853</PackageVersion>
     <Title>BibleBooks</Title>
     <Authors>markivan.basto</Authors>
     <Description>Bible book names, codes (OSIS, Paratext), abbreviations (Thompson, Standard), and chapters</Description>
@@ -20,6 +20,7 @@
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageTags>bible osis paratext thompson standard book names codes abbreviations</PackageTags>
+    <GeneratePackageOnBuild Condition="'$(Configuration)' == 'Release'">true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
