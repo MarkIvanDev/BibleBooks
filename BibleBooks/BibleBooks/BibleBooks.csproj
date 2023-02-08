@@ -4,24 +4,9 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <DefaultLanguage>en</DefaultLanguage>
     <NeutralLanguage>en</NeutralLanguage>
-    <Owners>markivan.basto</Owners>
     <LangVersion>latest</LangVersion>
     <Nullable>enable</Nullable>
-  </PropertyGroup>
-
-  <PropertyGroup>
-    <PackageId>BibleBooks</PackageId>
-    <PackageVersion>1.5.0-prerelease202210151853</PackageVersion>
-    <Title>BibleBooks</Title>
-    <Authors>markivan.basto</Authors>
-    <Description>Bible book names, codes (OSIS, Paratext), abbreviations (Thompson, Standard), and chapters</Description>
-    <Copyright>(c) 2020 Mark Ivan Basto</Copyright>
-    <PackageProjectUrl>https://github.com/MarkIvanDev/BibleBooks</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/MarkIvanDev/BibleBooks.git</RepositoryUrl>
-    <RepositoryType>git</RepositoryType>
-    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageTags>bible osis paratext thompson standard book names codes abbreviations</PackageTags>
+    <NuspecProperties>version=1.5.0-prerelease202210151853</NuspecProperties>
   </PropertyGroup>
 
 </Project>
