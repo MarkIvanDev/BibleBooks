@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace BibleBooks
+﻿namespace BibleBooks
 {
-    public enum Key
+    public enum BibleBook
     {
         Genesis = 1,
         Exodus = 2,

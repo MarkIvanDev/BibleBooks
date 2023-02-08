@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <metadata minClientVersion="2.12">
+    <id>BibleBooks</id>
+    <version>$version$</version>
+    <title>BibleBooks Locale (en)</title>
+    <authors>markivan.basto</authors>
+    <projectUrl>https://github.com/MarkIvanDev/BibleBooks</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Bible book names, codes (OSIS, Paratext), abbreviations (Thompson, Standard), and chapters</description>
+    <tags>bible osis paratext thompson standard book names codes abbreviations</tags>
+    <copyright>Copyright (c) Mark Ivan Basto</copyright>
+    <license type="expression">MIT</license>
+    <repository type="git" url="https://github.com/MarkIvanDev/BibleBooks.git" />
+    <dependencies>
+      <dependency id="BibleBooks.Core" version="[$version$]" />
+      <dependency id="BibleBooks.Core.fil" version="[$version$]" />
+    </dependencies>
+  </metadata>
+</package>
