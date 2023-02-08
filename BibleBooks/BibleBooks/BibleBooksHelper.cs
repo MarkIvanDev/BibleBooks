@@ -2,34 +2,36 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Text;
 
 namespace BibleBooks
 {
     public static class BibleBooksHelper
     {
-        private static readonly Dictionary<string, Key> keys;
+        private static readonly BibleBook[] books;
 
         static BibleBooksHelper()
         {
-            keys = ((Key[])Enum.GetValues(typeof(Key))).ToDictionary(k => k.ToString(), k => k);
+            books = (BibleBook[])Enum.GetValues(typeof(BibleBook));
         }
 
-        public static string GetNumber(Number number, CultureInfo culture = null)
+        public static IEnumerable<KeyValuePair<BibleBook, string>> GetAllNames(CultureInfo? culture = null)
         {
-            return Names.Numbers.ResourceManager.GetString(number.ToString(), culture ?? Names.Numbers.Culture);
-        }
-
-        public static string GetName(Key key, CultureInfo culture = null)
-        {
-            return Names.Books.ResourceManager.GetString(key.ToString(), culture ?? Names.Books.Culture);
-        }
-
-        public static Key? GetKeyForName(string name, CultureInfo culture = null)
-        {
-            foreach (var item in GetNames(culture))
+            foreach (var book in books)
             {
-                if (item.Value.Equals(name, StringComparison.CurrentCultureIgnoreCase))
+                yield return new KeyValuePair<BibleBook, string>(book, GetName(book, culture) ?? "");
+            }
+        }
+
+        public static string? GetName(BibleBook book, CultureInfo? culture = null)
+        {
+            return ResourceManagers.Books.GetString(book.ToString(), culture);
+        }
+
+        public static BibleBook? GetKeyForName(string? name, CultureInfo? culture = null)
+        {
+            foreach (var item in GetAllNames(culture))
+            {
+                if (IsEqual(item.Value, name?.Trim(), culture))
                 {
                     return item.Key;
                 }
@@ -37,24 +39,25 @@ namespace BibleBooks
             return null;
         }
 
-        public static IEnumerable<KeyValuePair<Key, string>> GetNames(CultureInfo culture = null)
+        public static IEnumerable<KeyValuePair<BibleBook, IList<string>>> GetAllAlternativeNames(CultureInfo? culture = null)
         {
-            foreach (var key in keys)
+            foreach (var book in books)
             {
-                yield return new KeyValuePair<Key, string>(key.Value, GetName(key.Value, culture));
+                yield return new KeyValuePair<BibleBook, IList<string>>(book, GetAlternativeNames(book, culture));
             }
         }
 
-        public static string GetAlternativeName(Key key, CultureInfo culture = null)
+        public static IList<string> GetAlternativeNames(BibleBook book, CultureInfo? culture = null)
         {
-            return Names.Alternative.ResourceManager.GetString(key.ToString(), culture ?? Names.Alternative.Culture);
+            var names = ResourceManagers.Alternative.GetString(book.ToString(), culture);
+            return string.IsNullOrEmpty(names) ? Array.Empty<string>() : names.Split('|');
         }
 
-        public static Key? GetKeyForAlternativeName(string alternativeName, CultureInfo culture = null)
+        public static BibleBook? GetKeyForAlternativeName(string? alternativeName, CultureInfo? culture = null)
         {
-            foreach (var item in GetAlternativeNames(culture))
+            foreach (var item in GetAllAlternativeNames(culture))
             {
-                if (item.Value.Equals(alternativeName, StringComparison.CurrentCultureIgnoreCase))
+                if (item.Value.Any(i => IsEqual(i, alternativeName?.Trim(), culture)))
                 {
                     return item.Key;
                 }
@@ -62,24 +65,24 @@ namespace BibleBooks
             return null;
         }
 
-        public static IEnumerable<KeyValuePair<Key, string>> GetAlternativeNames(CultureInfo culture = null)
+        public static IEnumerable<KeyValuePair<BibleBook, string>> GetAllOsisCodes()
         {
-            foreach (var key in keys)
+            foreach (var book in books)
             {
-                yield return new KeyValuePair<Key, string>(key.Value, GetAlternativeName(key.Value, culture));
+                yield return new KeyValuePair<BibleBook, string>(book, GetOsisCode(book) ?? "");
             }
         }
 
-        public static string GetOsisCode(Key key)
+        public static string? GetOsisCode(BibleBook book)
         {
-            return Codes.OSIS.ResourceManager.GetString(key.ToString());
+            return ResourceManagers.OSIS.GetString(book.ToString());
         }
 
-        public static Key? GetKeyForOsisCode(string code)
+        public static BibleBook? GetKeyForOsisCode(string? code)
         {
-            foreach (var item in GetOsisCodes())
+            foreach (var item in GetAllOsisCodes())
             {
-                if (item.Value.Equals(code, StringComparison.CurrentCultureIgnoreCase))
+                if (item.Value.Equals(code?.Trim(), StringComparison.CurrentCultureIgnoreCase))
                 {
                     return item.Key;
                 }
@@ -87,24 +90,24 @@ namespace BibleBooks
             return null;
         }
 
-        public static IEnumerable<KeyValuePair<Key, string>> GetOsisCodes()
+        public static IEnumerable<KeyValuePair<BibleBook, string>> GetAllParatextCodes()
         {
-            foreach (var key in keys)
+            foreach (var book in books)
             {
-                yield return new KeyValuePair<Key, string>(key.Value, GetOsisCode(key.Value));
+                yield return new KeyValuePair<BibleBook, string>(book, GetParatextCode(book) ?? "");
             }
         }
 
-        public static string GetParatextCode(Key key)
+        public static string? GetParatextCode(BibleBook book)
         {
-            return Codes.Paratext.ResourceManager.GetString(key.ToString());
+            return ResourceManagers.Paratext.GetString(book.ToString());
         }
 
-        public static Key? GetKeyForParatextCode(string code)
+        public static BibleBook? GetKeyForParatextCode(string? code)
         {
-            foreach (var item in GetParatextCodes())
+            foreach (var item in GetAllParatextCodes())
             {
-                if (item.Value.Equals(code, StringComparison.CurrentCultureIgnoreCase))
+                if (item.Value.Equals(code?.Trim(), StringComparison.CurrentCultureIgnoreCase))
                 {
                     return item.Key;
                 }
@@ -112,25 +115,26 @@ namespace BibleBooks
             return null;
         }
 
-        public static IEnumerable<KeyValuePair<Key, string>> GetParatextCodes()
+        public static IEnumerable<KeyValuePair<BibleBook, string>> GetAllStandardAbbreviations(CultureInfo? culture = null)
         {
-            foreach (var key in keys)
+            foreach (var book in books)
             {
-                yield return new KeyValuePair<Key, string>(key.Value, GetParatextCode(key.Value));
+                yield return new KeyValuePair<BibleBook, string>(book, GetStandardAbbreviation(book, culture) ?? "");
             }
         }
 
-        public static string GetStandardAbbreviation(Key key, CultureInfo culture = null)
+        public static string? GetStandardAbbreviation(BibleBook book, CultureInfo? culture = null)
         {
-            return Abbreviations.Standard.ResourceManager.GetString(key.ToString(), culture ?? Abbreviations.Standard.Culture);
+            return ResourceManagers.Standard.GetString(book.ToString(), culture);
         }
 
-        public static Key? GetKeyForStandardAbbreviation(string abbreviation, CultureInfo culture = null)
+        public static BibleBook? GetKeyForStandardAbbreviation(string? abbreviation, CultureInfo? culture = null)
         {
-            foreach (var item in GetStandardAbbreviations(culture))
+            var abbr = abbreviation?.Trim();
+            foreach (var item in GetAllStandardAbbreviations(culture))
             {
-                if (item.Value.Equals(abbreviation, StringComparison.CurrentCultureIgnoreCase) ||
-                    $"{item.Value}.".Equals(abbreviation, StringComparison.CurrentCultureIgnoreCase))
+                if (IsEqual(item.Value, abbr, culture) ||
+                    IsEqual($"{item.Value}.", abbr, culture))
                 {
                     return item.Key;
                 }
@@ -138,25 +142,26 @@ namespace BibleBooks
             return null;
         }
 
-        public static IEnumerable<KeyValuePair<Key, string>> GetStandardAbbreviations(CultureInfo culture = null)
+        public static IEnumerable<KeyValuePair<BibleBook, string>> GetAllThompsonAbbreviations(CultureInfo? culture = null)
         {
-            foreach (var key in keys)
+            foreach (var book in books)
             {
-                yield return new KeyValuePair<Key, string>(key.Value, GetStandardAbbreviation(key.Value, culture));
+                yield return new KeyValuePair<BibleBook, string>(book, GetThompsonAbbreviation(book, culture) ?? "");
             }
         }
 
-        public static string GetThompsonAbbreviation(Key key, CultureInfo culture = null)
+        public static string? GetThompsonAbbreviation(BibleBook book, CultureInfo? culture = null)
         {
-            return Abbreviations.Thompson.ResourceManager.GetString(key.ToString(), culture ?? Abbreviations.Thompson.Culture);
+            return ResourceManagers.Thompson.GetString(book.ToString(), culture);
         }
 
-        public static Key? GetKeyForThompsonAbbreviation(string abbreviation, CultureInfo culture = null)
+        public static BibleBook? GetKeyForThompsonAbbreviation(string? abbreviation, CultureInfo? culture = null)
         {
-            foreach (var item in GetThompsonAbbreviations(culture))
+            var abbr = abbreviation?.Trim();
+            foreach (var item in GetAllThompsonAbbreviations(culture))
             {
-                if(item.Value.Equals(abbreviation, StringComparison.CurrentCultureIgnoreCase) ||
-                   $"{item.Value}.".Equals(abbreviation, StringComparison.CurrentCultureIgnoreCase))
+                if (IsEqual(item.Value, abbr, culture) ||
+                    IsEqual($"{item.Value}.", abbr, culture))
                 {
                     return item.Key;
                 }
@@ -164,21 +169,33 @@ namespace BibleBooks
             return null;
         }
 
-        public static IEnumerable<KeyValuePair<Key, string>> GetThompsonAbbreviations(CultureInfo culture = null)
+        public static IEnumerable<KeyValuePair<BibleBook, int>> GetAllMaxChapters()
         {
-            foreach (var key in keys)
+            foreach (var book in books)
             {
-                yield return new KeyValuePair<Key, string>(key.Value, GetThompsonAbbreviation(key.Value, culture));
+                yield return new KeyValuePair<BibleBook, int>(book, GetMaxChapter(book) ?? 0);
             }
         }
 
-        public static int GetMaxChapter(Key key)
+        public static int? GetMaxChapter(BibleBook book)
         {
-            if (int.TryParse(Metadata.Chapters.ResourceManager.GetString(key.ToString()), out var maxChapter))
+            if (int.TryParse(ResourceManagers.Chapters.GetString(book.ToString()), out var maxChapter))
             {
                 return maxChapter;
             }
-            return int.MaxValue;
+            return null;
         }
+
+        public static string? GetNumber(Number number, CultureInfo? culture = null)
+        {
+            return ResourceManagers.Numbers.GetString(number.ToString(), culture);
+        }
+
+        private static bool IsEqual(string? a, string? b, CultureInfo? culture = null)
+        {
+            var comparer = culture?.CompareInfo?.GetStringComparer(CompareOptions.IgnoreCase) ?? StringComparer.OrdinalIgnoreCase;
+            return comparer.Equals(a, b);
+        }
+
     }
 }

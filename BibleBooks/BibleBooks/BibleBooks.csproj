@@ -2,103 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <DefaultLanguage>en-US</DefaultLanguage>
-    <NeutralLanguage>en-US</NeutralLanguage>
-    <Owners>markivan.basto</Owners>
+    <DefaultLanguage>en</DefaultLanguage>
+    <NeutralLanguage>en</NeutralLanguage>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <NuspecProperties>version=2.0.0-dev.1</NuspecProperties>
   </PropertyGroup>
-
-  <PropertyGroup>
-    <PackageId>BibleBooks</PackageId>
-    <PackageVersion>1.5.0-prerelease202210151853</PackageVersion>
-    <Title>BibleBooks</Title>
-    <Authors>markivan.basto</Authors>
-    <Description>Bible book names, codes (OSIS, Paratext), abbreviations (Thompson, Standard), and chapters</Description>
-    <Copyright>(c) 2020 Mark Ivan Basto</Copyright>
-    <PackageProjectUrl>https://github.com/MarkIvanDev/BibleBooks</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/MarkIvanDev/BibleBooks.git</RepositoryUrl>
-    <RepositoryType>git</RepositoryType>
-    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageTags>bible osis paratext thompson standard book names codes abbreviations</PackageTags>
-    <GeneratePackageOnBuild Condition="'$(Configuration)' == 'Release'">true</GeneratePackageOnBuild>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <Compile Update="Codes\OSIS.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>OSIS.resx</DependentUpon>
-    </Compile>
-    <Compile Update="Codes\Paratext.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Paratext.resx</DependentUpon>
-    </Compile>
-    <Compile Update="Metadata\Chapters.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Chapters.resx</DependentUpon>
-    </Compile>
-    <Compile Update="Names\Alternative.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Alternative.resx</DependentUpon>
-    </Compile>
-    <Compile Update="Names\Books.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Books.resx</DependentUpon>
-    </Compile>
-    <Compile Update="Abbreviations\Standard.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Standard.resx</DependentUpon>
-    </Compile>
-    <Compile Update="Abbreviations\Thompson.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Thompson.resx</DependentUpon>
-    </Compile>
-    <Compile Update="Names\Numbers.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Numbers.resx</DependentUpon>
-    </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Update="Codes\Paratext.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Paratext.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Metadata\Chapters.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Chapters.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Names\Alternative.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Alternative.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Names\Books.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Books.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Codes\OSIS.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>OSIS.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Abbreviations\Standard.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Standard.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Abbreviations\Thompson.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Thompson.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Names\Numbers.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Numbers.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-  </ItemGroup>
 
 </Project>
