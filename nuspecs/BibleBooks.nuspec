@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
-  <metadata minClientVersion="2.12">
+  <metadata>
     <id>BibleBooks</id>
     <version>$version$</version>
     <title>BibleBooks Locale (en)</title>
@@ -12,9 +12,13 @@
     <copyright>Copyright (c) Mark Ivan Basto</copyright>
     <license type="expression">MIT</license>
     <repository type="git" url="https://github.com/MarkIvanDev/BibleBooks.git" />
+    <readme>README.md</readme>
     <dependencies>
       <dependency id="BibleBooks.Core" version="[$version$]" />
       <dependency id="BibleBooks.Core.fil" version="[$version$]" />
     </dependencies>
   </metadata>
+  <files>
+    <file src="..\README.md" target="\" />
+  </files>
 </package>
