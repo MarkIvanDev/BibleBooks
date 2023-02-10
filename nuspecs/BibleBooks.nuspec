@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
-  <metadata>
+  <metadata minClientVersion="2.12">
     <id>BibleBooks</id>
     <version>$version$</version>
-    <title>BibleBooks Locale (en)</title>
+    <title>BibleBooks All Locales</title>
     <authors>markivan.basto</authors>
     <projectUrl>https://github.com/MarkIvanDev/BibleBooks</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -14,11 +14,14 @@
     <repository type="git" url="https://github.com/MarkIvanDev/BibleBooks.git" />
     <readme>README.md</readme>
     <dependencies>
-      <dependency id="BibleBooks.Core" version="[$version$]" />
-      <dependency id="BibleBooks.Core.fil" version="[$version$]" />
+      <group targetFramework="netstandard2.0" />
     </dependencies>
   </metadata>
   <files>
+    <file src="..\BibleBooks\BibleBooks\bin\Release\netstandard2.0\*.dll" target="lib\netstandard2.0" />
+    <file src="..\BibleBooks\BibleBooks\bin\Release\netstandard2.0\*.xml" target="lib\netstandard2.0" />
+    <file src="..\BibleBooks\BibleBooks\bin\Release\netstandard2.0\fil\*.dll" target="lib\netstandard2.0\fil" />
+    <file src="..\BibleBooks\BibleBooks\bin\Release\netstandard2.0\fil\*.xml" target="lib\netstandard2.0\fil" />
     <file src="..\README.md" target="\" />
   </files>
 </package>
