@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
-  <metadata>
+  <metadata minClientVersion="2.12">
     <id>BibleBooks.Core.fil</id>
     <version>$version$</version>
     <title>BibleBooks Locale (fil)</title>

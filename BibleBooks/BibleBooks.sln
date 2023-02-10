@@ -5,7 +5,7 @@ VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BibleBooks", "BibleBooks\BibleBooks.csproj", "{39B24DAB-5FED-4BD3-87EA-D0055963A82F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BibleBooks.Tests", "BibleBooks.Tests\BibleBooks.Tests.csproj", "{2240EC24-755A-46ED-9EA4-8C5BD9AD78B5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BibleBooks.Tests", "BibleBooks.Tests\BibleBooks.Tests.csproj", "{2240EC24-755A-46ED-9EA4-8C5BD9AD78B5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
