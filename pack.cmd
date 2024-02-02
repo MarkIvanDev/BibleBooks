@@ -1,1 +1,1 @@
-powershell -NoExit .\pack.ps1
+powershell -NoExit -ExecutionPolicy Bypass .\pack.ps1
