@@ -7,7 +7,7 @@ namespace BibleBooks.Tests
         private readonly List<object[]> _data = new List<object[]>()
         {
             new object[] { CultureInfos.En },
-            new object[] { CultureInfos.Fil },
+            new object[] { CultureInfos.FilPH },
         };
 
         public IEnumerator<object[]> GetEnumerator() => _data.GetEnumerator();
