@@ -1,23 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
   <metadata minClientVersion="2.12">
-    <id>BibleBooks.Core.fil</id>
+    <id>BibleBooks.Core.fil-PH</id>
     <version>$version$</version>
-    <title>BibleBooks Locale (fil)</title>
-    <authors>markivan.basto</authors>
+    <title>BibleBooks Locale (fil-PH)</title>
+    <authors>Mark Ivan Basto</authors>
     <projectUrl>https://github.com/MarkIvanDev/BibleBooks</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>BibleBooks Filipino (fil) Locale</description>
+    <description>BibleBooks Filipino (fil-PH) Locale</description>
     <tags>bible osis paratext thompson standard book names codes abbreviations</tags>
     <copyright>Copyright (c) Mark Ivan Basto</copyright>
     <license type="expression">MIT</license>
-    <language>fil</language>
+    <language>fil-PH</language>
+    <readme>README.md</readme>
     <repository type="git" url="https://github.com/MarkIvanDev/BibleBooks.git" />
     <dependencies>
-      <dependency id="BibleBooks.Core" version="[$version$]" />
+      <group targetFramework="netstandard2.0">
+        <dependency id="BibleBooks.Core" version="[$version$]" />
+      </group>
     </dependencies>
   </metadata>
   <files>
-    <file src="..\BibleBooks\BibleBooks\bin\Release\netstandard2.0\fil\*.*" target="lib\netstandard2.0\fil" />
+    <file src="..\BibleBooks\BibleBooks\bin\Release\netstandard2.0\fil-PH\*.*" target="lib\netstandard2.0\fil-PH" />
+    <file src="..\README.md" target="\" />
   </files>
 </package>
