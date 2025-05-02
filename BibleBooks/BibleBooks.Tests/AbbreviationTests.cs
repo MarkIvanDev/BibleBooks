@@ -1,23 +1,20 @@
-namespace BibleBooks.Tests
-{
-    public class AbbreviationTests
-    {
-        [Fact]
-        public void Standard()
-        {
-            foreach (var book in Enum.GetValues<BibleBook>())
-            {
-                Assert.NotNull(BibleBooksHelper.GetStandardAbbreviation(book));
-            }
-        }
+using BibleBooks.Tests.Generators;
 
-        [Fact]
-        public void Thompson()
-        {
-            foreach (var book in Enum.GetValues<BibleBook>())
-            {
-                Assert.NotNull(BibleBooksHelper.GetThompsonAbbreviation(book));
-            }
-        }
+namespace BibleBooks.Tests;
+
+public class AbbreviationTests
+{
+    [Theory]
+    [ClassData(typeof(BibleBookGenerator))]
+    public void Standard(BibleBook book)
+    {
+        Assert.NotNull(BibleBooksHelper.GetStandardAbbreviation(book));
+    }
+
+    [Theory]
+    [ClassData(typeof(BibleBookGenerator))]
+    public void Thompson(BibleBook book)
+    {
+        Assert.NotNull(BibleBooksHelper.GetThompsonAbbreviation(book));
     }
 }

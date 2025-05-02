@@ -1,14 +1,13 @@
-﻿namespace BibleBooks.Tests
+﻿using BibleBooks.Tests.Generators;
+
+namespace BibleBooks.Tests;
+
+public class MetadataTests
 {
-    public class MetadataTests
+    [Theory]
+    [ClassData(typeof(BibleBookGenerator))]
+    public void MaxChapters(BibleBook book)
     {
-        [Fact]
-        public void MaxChapters()
-        {
-            foreach (var book in Enum.GetValues<BibleBook>())
-            {
-                Assert.NotNull(BibleBooksHelper.GetMaxChapter(book));
-            }
-        }
+        Assert.NotNull(BibleBooksHelper.GetMaxChapter(book));
     }
 }

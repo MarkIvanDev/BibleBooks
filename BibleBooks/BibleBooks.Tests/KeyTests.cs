@@ -1,68 +1,58 @@
 ﻿using System.Globalization;
+using BibleBooks.Tests.Generators;
 
-namespace BibleBooks.Tests
+namespace BibleBooks.Tests;
+
+public class KeyTests
 {
-    public class KeyTests
+    [Theory]
+    [ClassData(typeof(BibleBookGenerator))]
+    public void KeyForName(BibleBook book)
     {
-        [Fact]
-        public void KeyForName()
-        {
-            foreach (var book in Enum.GetValues<BibleBook>())
-            {
-                var name = BibleBooksHelper.GetName(book);
-                Assert.Equal(BibleBooksHelper.GetKeyForName(name), book);
-            }
-        }
+        var name = BibleBooksHelper.GetName(book);
+        Assert.Equal(BibleBooksHelper.GetKeyForName(name), book);
+    }
 
-        [Theory]
-        [ClassData(typeof(CultureInfoGenerator))]
-        public void KeyForNameWithCulture(CultureInfo culture)
+    [Theory]
+    [ClassData(typeof(CultureInfoGenerator))]
+    public void KeyForNameWithCulture(CultureInfo culture)
+    {
+        foreach (var book in Enum.GetValues<BibleBook>())
         {
-            foreach (var book in Enum.GetValues<BibleBook>())
-            {
-                var name = BibleBooksHelper.GetName(book, culture);
-                Assert.Equal(BibleBooksHelper.GetKeyForName(name, culture), book);
-            }
+            var name = BibleBooksHelper.GetName(book, culture);
+            Assert.Equal(BibleBooksHelper.GetKeyForName(name, culture), book);
         }
+    }
 
-        [Fact]
-        public void KeyForOsisCode()
-        {
-            foreach (var book in Enum.GetValues<BibleBook>())
-            {
-                var osis = BibleBooksHelper.GetOsisCode(book);
-                Assert.Equal(BibleBooksHelper.GetKeyForOsisCode(osis), book);
-            }
-        }
+    [Theory]
+    [ClassData(typeof(BibleBookGenerator))]
+    public void KeyForOsisCode(BibleBook book)
+    {
+        var osis = BibleBooksHelper.GetOsisCode(book);
+        Assert.Equal(BibleBooksHelper.GetKeyForOsisCode(osis), book);
+    }
 
-        [Fact]
-        public void KeyForParatextCode()
-        {
-            foreach (var book in Enum.GetValues<BibleBook>())
-            {
-                var paratext = BibleBooksHelper.GetParatextCode(book);
-                Assert.Equal(BibleBooksHelper.GetKeyForParatextCode(paratext), book);
-            }
-        }
+    [Theory]
+    [ClassData(typeof(BibleBookGenerator))]
+    public void KeyForParatextCode(BibleBook book)
+    {
+        var paratext = BibleBooksHelper.GetParatextCode(book);
+        Assert.Equal(BibleBooksHelper.GetKeyForParatextCode(paratext), book);
+    }
 
-        [Fact]
-        public void KeyForStandardAbbreviation()
-        {
-            foreach (var book in Enum.GetValues<BibleBook>())
-            {
-                var standard = BibleBooksHelper.GetStandardAbbreviation(book);
-                Assert.Equal(BibleBooksHelper.GetKeyForStandardAbbreviation(standard), book);
-            }
-        }
+    [Theory]
+    [ClassData(typeof(BibleBookGenerator))]
+    public void KeyForStandardAbbreviation(BibleBook book)
+    {
+        var standard = BibleBooksHelper.GetStandardAbbreviation(book);
+        Assert.Equal(BibleBooksHelper.GetKeyForStandardAbbreviation(standard), book);
+    }
 
-        [Fact]
-        public void KeyForThompsonAbbreviation()
-        {
-            foreach (var book in Enum.GetValues<BibleBook>())
-            {
-                var thompson = BibleBooksHelper.GetThompsonAbbreviation(book);
-                Assert.Equal(BibleBooksHelper.GetKeyForThompsonAbbreviation(thompson), book);
-            }
-        }
+    [Theory]
+    [ClassData(typeof(BibleBookGenerator))]
+    public void KeyForThompsonAbbreviation(BibleBook book)
+    {
+        var thompson = BibleBooksHelper.GetThompsonAbbreviation(book);
+        Assert.Equal(BibleBooksHelper.GetKeyForThompsonAbbreviation(thompson), book);
     }
 }
