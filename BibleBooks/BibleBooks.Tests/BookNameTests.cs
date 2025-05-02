@@ -1,64 +1,49 @@
 ﻿using System.Globalization;
+using BibleBooks.Tests.Generators;
 
-namespace BibleBooks.Tests
+namespace BibleBooks.Tests;
+
+public class BookNameTests
 {
-    public class BookNameTests
+    [Theory]
+    [ClassData(typeof(BibleBookGenerator))]
+    public void Names(BibleBook book)
     {
-        [Fact]
-        public void Names()
-        {
-            foreach (var book in Enum.GetValues<BibleBook>())
-            {
-                Assert.NotNull(BibleBooksHelper.GetName(book));
-            }
-        }
+        Assert.NotNull(BibleBooksHelper.GetName(book));
+    }
 
-        [Theory]
-        [ClassData(typeof(CultureInfoGenerator))]
-        public void NamesWithCulture(CultureInfo culture)
-        {
-            foreach (var book in Enum.GetValues<BibleBook>())
-            {
-                Assert.NotNull(BibleBooksHelper.GetName(book, culture));
-            }
-        }
+    [Theory]
+    [ClassData(typeof(BibleBookCultureInfoMatrix))]
+    public void NamesWithCulture(BibleBook book, CultureInfo culture)
+    {
+        Assert.NotNull(BibleBooksHelper.GetName(book, culture));
+    }
 
-        [Fact]
-        public void AlternativeNames()
-        {
-            foreach (var book in Enum.GetValues<BibleBook>())
-            {
-                Assert.NotNull(BibleBooksHelper.GetAlternativeNames(book));
-            }
-        }
+    [Theory]
+    [ClassData(typeof(BibleBookGenerator))]
+    public void AlternativeNames(BibleBook book)
+    {
+        Assert.NotNull(BibleBooksHelper.GetAlternativeNames(book));
+    }
 
-        [Theory]
-        [ClassData(typeof(CultureInfoGenerator))]
-        public void AlternativeNamesWithCulture(CultureInfo culture)
-        {
-            foreach (var book in Enum.GetValues<BibleBook>())
-            {
-                Assert.NotNull(BibleBooksHelper.GetAlternativeNames(book, culture));
-            }
-        }
+    [Theory]
+    [ClassData(typeof(BibleBookCultureInfoMatrix))]
+    public void AlternativeNamesWithCulture(BibleBook book, CultureInfo culture)
+    {
+        Assert.NotNull(BibleBooksHelper.GetAlternativeNames(book, culture));
+    }
 
-        [Fact]
-        public void Numbers()
-        {
-            foreach (var number in Enum.GetValues<Number>())
-            {
-                Assert.NotNull(BibleBooksHelper.GetNumber(number));
-            }
-        }
+    [Theory]
+    [ClassData(typeof(NumberGenerator))]
+    public void Numbers(Number number)
+    {
+        Assert.NotNull(BibleBooksHelper.GetNumber(number));
+    }
 
-        [Theory]
-        [ClassData(typeof(CultureInfoGenerator))]
-        public void NumbersWithCulture(CultureInfo culture)
-        {
-            foreach (var number in Enum.GetValues<Number>())
-            {
-                Assert.NotNull(BibleBooksHelper.GetNumber(number, culture));
-            }
-        }
+    [Theory]
+    [ClassData(typeof(NumberCultureInfoMatrix))]
+    public void NumbersWithCulture(Number number, CultureInfo culture)
+    {
+        Assert.NotNull(BibleBooksHelper.GetNumber(number, culture));
     }
 }
